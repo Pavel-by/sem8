@@ -95,15 +95,33 @@ plt.xlabel("Средние значения")
 plt.ylabel("Частоты")
 plt.show()
 
-spaces_distrib = []
+space_width = spaces_median[1] - spaces_median[0]
+spaces_median_t = np.array([spaces_median[0] - space_width, *spaces_median, spaces_median[-1] + space_width])
+
+spaces_distrib = [0, 0]
+t = 0
+for i in spaces_abs_freq:
+    t += i
+    spaces_distrib.append(t)
+
+plt.step(spaces_median_t, spaces_distrib)
+plt.title("Эмпирическая ф.р. для абсолютной частоты")
+plt.xlabel("Средние значения")
+plt.ylabel("Абсолютная частота")
+plt.xticks(spaces_median_t)
+plt.grid()
+plt.show()
+
+spaces_distrib = [0, 0]
 t = 0
 for i in spaces_abs_freq:
     t += i / np.sum(spaces_abs_freq)
     spaces_distrib.append(t)
 
-plt.plot(spaces_median, spaces_distrib)
-plt.title("Эмпирическая функция распределения")
+plt.step(spaces_median_t, spaces_distrib)
+plt.title("Эмпирическая ф.р. для относительной частоты")
 plt.xlabel("Средние значения")
 plt.ylabel("Относительная частота")
+plt.xticks(spaces_median_t)
 plt.grid()
 plt.show()
