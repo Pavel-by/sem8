@@ -94,4 +94,4 @@ N = len(data)
 S2 = N/(N-1)*disp
 print("Исправленная выборочная дисперсия: S^2={}, СКО S=sqrt(S^2)={}".format(S2, sqrt(S2)))
 
-sys.stdout = sys.__stdout__
+sys.stdout = saved_stdout
