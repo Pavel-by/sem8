@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  rcssserver:
+    build: ./rcssserver
+    ports:
+      - "127.0.0.1:6666:6000/udp"
